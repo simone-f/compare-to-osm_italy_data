@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Scarica da dropbox un file zip con la cartella html di compare-to-osm
+# Scarica da dropbox un file zip con la cartella html/data di compare-to-osm
 # per l'Italia
 
 import os
@@ -21,7 +21,7 @@ project_directory = os.path.join(projects_directory,
 html_directory = os.path.join(project_directory, "html")
 data_directory = os.path.join(html_directory, "data")
 
-# Cancella dati vecchi, scarica file compresso e crea la directory del progetto
+# Cancella dati vecchi, scarica file compresso e crea la directory con le tile
 if os.path.isfile(ZIP_FILE):
     print "\n- Cancella vecchio file compresso: \n{0}".format(ZIP_FILE)
     os.remove(ZIP_FILE)
