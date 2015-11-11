@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title id="title">Confronto strade italiane in OpenStreetMap ed in open data</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/leaflet.css">
+    <link rel="stylesheet" href="css/leaflet.zoomdisplay.css">
+    <script src="js/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+    <div id="map"></div>
+    <script src="js/leaflet.js"></script>
+    <script src="js/leaflet.zoomdisplay.js"></script>
+    <script src="js/topojson.js"></script>
+    <script>
+        $(document).ready(function () {
+            var map = L.map('map');
+            map.setView([40.5173057603, 16.0978183965],
+                         6);
+
+            var osmLayer = L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png", {
+                attribution: "&copy; <a href='http://osm.org/copyright'>OpenStreetMap contributors</a>",
+                });
+            map.addLayer(osmLayer);
+
+            var popup = L.popup();
+
+            function onMapClick(e) {
+                var x = e.latlng["lng"];
+                var y = e.latlng["lat"];
+                var left = x - 0.0005;
+                var right = x + 0.0005;
+                var top = y + 0.0005;
+                var bottom = y - 0.0005;
+                var text = "Modifica dati OSM con:<br>";
+                var josmUrl = "http://localhost:8111/";
+                josmUrl += "load_and_zoom?left=" + left + "&right=" + right + "&top=" + top + "&bottom=" + bottom;
+                var josmLink = "<a href='" + josmUrl + "' target='_blank' title=\"JOSM remote link\">JOSM</a>";
+                var idUrl = "http://www.openstreetmap.org/edit?editor=id#map=17/" + y + "/" + x + "";
+                var idLink = "\n<a href='" + idUrl + "' target='_blank' title=\"iD link\">iD</a>";
+                text = text + josmLink + "<br>" + idLink;
+                popup
+                    .setLatLng(e.latlng)
+                    .setContent(text)
+                    .openOn(map);
+            }
+
+            map.on('click', onMapClick);
+
+            var overlayMaps = {};
+            var layers = [];
+            
+            <!--TASK: 0 Trento-->
+            
+
+            
+            layers.push({
+                "notinosm": L.tileLayer('data/Trento/tiles/notinosm/{z}/{x}/{y}.png'),
+                "onlyinosm": L.tileLayer('data/Trento/tiles/onlyinosm/{z}/{x}/{y}.png')
+            });
+            
+            map
+                .addLayer(layers[0]["notinosm"])
+                .addLayer(layers[0]["onlyinosm"]);
+            // Deactivate layers
+            map.removeLayer(layers[0]["onlyinosm"]);
+
+            overlayMaps["Trento mancanti 09/11/2015"] = layers[0]["notinosm"];
+            overlayMaps["Trento solo in OSM"] = layers[0]["onlyinosm"];
+            
+            <!--TASK: 1 Provincia_Trento-->
+            
+
+            
+            layers.push({
+                "notinosm": L.tileLayer('data/Provincia_Trento/tiles/notinosm/{z}/{x}/{y}.png'),
+                "onlyinosm": L.tileLayer('data/Provincia_Trento/tiles/onlyinosm/{z}/{x}/{y}.png')
+            });
+            
+            map
+                .addLayer(layers[1]["notinosm"])
+                .addLayer(layers[1]["onlyinosm"]);
+            // Deactivate layers
+            map.removeLayer(layers[1]["onlyinosm"]);
+
+            overlayMaps["Provincia_Trento mancanti 09/11/2015"] = layers[1]["notinosm"];
+            overlayMaps["Provincia_Trento solo in OSM"] = layers[1]["onlyinosm"];
+            
+            <!--TASK: 2 Storo-->
+            
+
+            
+            layers.push({
+                "notinosm": L.tileLayer('data/Storo/tiles/notinosm/{z}/{x}/{y}.png'),
+                "onlyinosm": L.tileLayer('data/Storo/tiles/onlyinosm/{z}/{x}/{y}.png')
+            });
+            
+            map
+                .addLayer(layers[2]["notinosm"])
+                .addLayer(layers[2]["onlyinosm"]);
+            // Deactivate layers
+            map.removeLayer(layers[2]["onlyinosm"]);
+
+            overlayMaps["Storo mancanti 09/11/2015"] = layers[2]["notinosm"];
+            overlayMaps["Storo solo in OSM"] = layers[2]["onlyinosm"];
+            
+            <!--TASK: 3 Belluno-->
+            
+
+            
+            layers.push({
+                "notinosm": L.tileLayer('data/Belluno/tiles/notinosm/{z}/{x}/{y}.png'),
+                "onlyinosm": L.tileLayer('data/Belluno/tiles/onlyinosm/{z}/{x}/{y}.png')
+            });
+            
+            map
+                .addLayer(layers[3]["notinosm"])
+                .addLayer(layers[3]["onlyinosm"]);
+            // Deactivate layers
+            map.removeLayer(layers[3]["onlyinosm"]);
+
+            overlayMaps["Belluno mancanti 09/11/2015"] = layers[3]["notinosm"];
+            overlayMaps["Belluno solo in OSM"] = layers[3]["onlyinosm"];
+            
+            <!--TASK: 4 Padova-->
+            
+
+            
+            layers.push({
+                "notinosm": L.tileLayer('data/Padova/tiles/notinosm/{z}/{x}/{y}.png'),
+                "onlyinosm": L.tileLayer('data/Padova/tiles/onlyinosm/{z}/{x}/{y}.png')
+            });
+            
+            map
+                .addLayer(layers[4]["notinosm"])
+                .addLayer(layers[4]["onlyinosm"]);
+            // Deactivate layers
+            map.removeLayer(layers[4]["onlyinosm"]);
+
+            overlayMaps["Padova mancanti 09/11/2015"] = layers[4]["notinosm"];
+            overlayMaps["Padova solo in OSM"] = layers[4]["onlyinosm"];
+            
+            <!--TASK: 5 Rovigo-->
+            
+
+            
+            layers.push({
+                "notinosm": L.tileLayer('data/Rovigo/tiles/notinosm/{z}/{x}/{y}.png'),
+                "onlyinosm": L.tileLayer('data/Rovigo/tiles/onlyinosm/{z}/{x}/{y}.png')
+            });
+            
+            map
+                .addLayer(layers[5]["notinosm"])
+                .addLayer(layers[5]["onlyinosm"]);
+            // Deactivate layers
+            map.removeLayer(layers[5]["onlyinosm"]);
+
+            overlayMaps["Rovigo mancanti 09/11/2015"] = layers[5]["notinosm"];
+            overlayMaps["Rovigo solo in OSM"] = layers[5]["onlyinosm"];
+            
+            <!--TASK: 6 Treviso-->
+            
+
+            
+            layers.push({
+                "notinosm": L.tileLayer('data/Treviso/tiles/notinosm/{z}/{x}/{y}.png'),
+                "onlyinosm": L.tileLayer('data/Treviso/tiles/onlyinosm/{z}/{x}/{y}.png')
+            });
+            
+            map
+                .addLayer(layers[6]["notinosm"])
+                .addLayer(layers[6]["onlyinosm"]);
+            // Deactivate layers
+            map.removeLayer(layers[6]["onlyinosm"]);
+
+            overlayMaps["Treviso mancanti 09/11/2015"] = layers[6]["notinosm"];
+            overlayMaps["Treviso solo in OSM"] = layers[6]["onlyinosm"];
+            
+            <!--TASK: 7 Venezia-->
+            
+
+            
+            layers.push({
+                "notinosm": L.tileLayer('data/Venezia/tiles/notinosm/{z}/{x}/{y}.png'),
+                "onlyinosm": L.tileLayer('data/Venezia/tiles/onlyinosm/{z}/{x}/{y}.png')
+            });
+            
+            map
+                .addLayer(layers[7]["notinosm"])
+                .addLayer(layers[7]["onlyinosm"]);
+            // Deactivate layers
+            map.removeLayer(layers[7]["onlyinosm"]);
+
+            overlayMaps["Venezia mancanti 09/11/2015"] = layers[7]["notinosm"];
+            overlayMaps["Venezia solo in OSM"] = layers[7]["onlyinosm"];
+            
+            <!--TASK: 8 Verona-->
+            
+
+            
+            layers.push({
+                "notinosm": L.tileLayer('data/Verona/tiles/notinosm/{z}/{x}/{y}.png'),
+                "onlyinosm": L.tileLayer('data/Verona/tiles/onlyinosm/{z}/{x}/{y}.png')
+            });
+            
+            map
+                .addLayer(layers[8]["notinosm"])
+                .addLayer(layers[8]["onlyinosm"]);
+            // Deactivate layers
+            map.removeLayer(layers[8]["onlyinosm"]);
+
+            overlayMaps["Verona mancanti 09/11/2015"] = layers[8]["notinosm"];
+            overlayMaps["Verona solo in OSM"] = layers[8]["onlyinosm"];
+            
+            <!--TASK: 9 Verona_Comune-->
+            
+
+            
+            layers.push({
+                "notinosm": L.tileLayer('data/Verona_Comune/tiles/notinosm/{z}/{x}/{y}.png'),
+                "onlyinosm": L.tileLayer('data/Verona_Comune/tiles/onlyinosm/{z}/{x}/{y}.png')
+            });
+            
+            map
+                .addLayer(layers[9]["notinosm"])
+                .addLayer(layers[9]["onlyinosm"]);
+            // Deactivate layers
+            map.removeLayer(layers[9]["onlyinosm"]);
+
+            overlayMaps["Verona_Comune mancanti 09/11/2015"] = layers[9]["notinosm"];
+            overlayMaps["Verona_Comune solo in OSM"] = layers[9]["onlyinosm"];
+            
+            <!--TASK: 10 Vicenza-->
+            
+
+            
+            layers.push({
+                "notinosm": L.tileLayer('data/Vicenza/tiles/notinosm/{z}/{x}/{y}.png'),
+                "onlyinosm": L.tileLayer('data/Vicenza/tiles/onlyinosm/{z}/{x}/{y}.png')
+            });
+            
+            map
+                .addLayer(layers[10]["notinosm"])
+                .addLayer(layers[10]["onlyinosm"]);
+            // Deactivate layers
+            map.removeLayer(layers[10]["onlyinosm"]);
+
+            overlayMaps["Vicenza mancanti 09/11/2015"] = layers[10]["notinosm"];
+            overlayMaps["Vicenza solo in OSM"] = layers[10]["onlyinosm"];
+            
+            <!--TASK: 11 Comune_Modena-->
+            
+
+            
+            layers.push({
+                "notinosm": L.tileLayer('data/Comune_Modena/tiles/notinosm/{z}/{x}/{y}.png'),
+                "onlyinosm": L.tileLayer('data/Comune_Modena/tiles/onlyinosm/{z}/{x}/{y}.png')
+            });
+            
+            map
+                .addLayer(layers[11]["notinosm"])
+                .addLayer(layers[11]["onlyinosm"]);
+            // Deactivate layers
+            map.removeLayer(layers[11]["onlyinosm"]);
+
+            overlayMaps["Comune_Modena mancanti 09/11/2015"] = layers[11]["notinosm"];
+            overlayMaps["Comune_Modena solo in OSM"] = layers[11]["onlyinosm"];
+            
+            <!--TASK: 12 Rimini-->
+            
+
+            
+            layers.push({
+                "notinosm": L.tileLayer('data/Rimini/tiles/notinosm/{z}/{x}/{y}.png'),
+                "onlyinosm": L.tileLayer('data/Rimini/tiles/onlyinosm/{z}/{x}/{y}.png')
+            });
+            
+            map
+                .addLayer(layers[12]["notinosm"])
+                .addLayer(layers[12]["onlyinosm"]);
+            // Deactivate layers
+            map.removeLayer(layers[12]["onlyinosm"]);
+
+            overlayMaps["Rimini mancanti 09/11/2015"] = layers[12]["notinosm"];
+            overlayMaps["Rimini solo in OSM"] = layers[12]["onlyinosm"];
+            
+            <!--TASK: 13 Siena-->
+            
+
+            
+            layers.push({
+                "notinosm": L.tileLayer('data/Siena/tiles/notinosm/{z}/{x}/{y}.png'),
+                "onlyinosm": L.tileLayer('data/Siena/tiles/onlyinosm/{z}/{x}/{y}.png')
+            });
+            
+            map
+                .addLayer(layers[13]["notinosm"])
+                .addLayer(layers[13]["onlyinosm"]);
+            // Deactivate layers
+            map.removeLayer(layers[13]["onlyinosm"]);
+
+            overlayMaps["Siena mancanti 09/11/2015"] = layers[13]["notinosm"];
+            overlayMaps["Siena solo in OSM"] = layers[13]["onlyinosm"];
+            
+            <!--TASK: 14 Basilicata-->
+            
+
+            
+            layers.push({
+                "notinosm": L.tileLayer('data/Basilicata/tiles/notinosm/{z}/{x}/{y}.png'),
+                "onlyinosm": L.tileLayer('data/Basilicata/tiles/onlyinosm/{z}/{x}/{y}.png')
+            });
+            
+            map
+                .addLayer(layers[14]["notinosm"])
+                .addLayer(layers[14]["onlyinosm"]);
+            // Deactivate layers
+            map.removeLayer(layers[14]["onlyinosm"]);
+
+            overlayMaps["Basilicata mancanti 09/11/2015"] = layers[14]["notinosm"];
+            overlayMaps["Basilicata solo in OSM"] = layers[14]["onlyinosm"];
+            
+            var baseMaps = {"OpenStreetMap": osmLayer};
+            L.control.layers(baseMaps, overlayMaps, {"collapsed": false}).addTo(map);
+        })
+    </script>
+    <div id="infobox">
+        <b>Strade da mappare in <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a></b>
+        <p>Confronto fra strade in OSM e dati rilasciati dalla pubblica amministrazione.
+        <br><br>Open data:
+        
+        
+            
+            
+            <br>- <a href="http://www.comune.trento.it/Aree-tematiche/Cartografia/Download/Stradario-Open-Data">Comune di Trento</a> <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.it" target="_blank">CC0</a> 
+            
+            
+        
+            
+            
+            <br>- <a href="http://dati.trentino.it/dataset/comune-di-storo-stradario" target="_blank">Comune di Storo</a> <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.it" target="_blank">CC0</a> 
+            
+            
+        
+            
+            
+        
+            
+            
+            <br>- <a href="http://idt.regione.veneto.it/app/metacatalog/" target="_blank">CTR Veneto</a> <a href="http://www.dati.gov.it/iodl/2.0/" target="_blank">IODL 2.0</a> 
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+            <br>- <a href="http://www.comune.verona.it/nqcontent.cfm?a_id=37426" target="_blank">Comune di Verona</a> <a href="http://www.dati.gov.it/iodl/2.0/" target="_blank">IODL 2.0</a> 
+            
+            
+        
+            
+            
+            <br>- <a href="http://idt.regione.veneto.it/app/metacatalog/" target="_blank">CTR Veneto</a> <a href="http://www.dati.gov.it/iodl/2.0/" target="_blank">IODL 2.0</a> 
+            
+            
+        
+            
+            
+            <br>- <a href="http://dati.emilia-romagna.it/catalogodati/ricerca-avanzata/dato/100805-100805-stradario-comunale.html">Comune di Modena</a> <a href="http://creativecommons.org/licenses/by/3.0/it/legalcode">CC-BY</a> 
+            
+            
+        
+            
+            
+            <br>- <a href="http://www.comune.rimini.it/filo_diretto/open_data/-toponomastica/" target="_blank">Comune di Rimini</a> <a href="http://creativecommons.org/publicdomain/zero/1.0/" target="_blank">CC0</a> 
+            
+            
+        
+            
+            
+            <br>- <a href="http://www.datiopen.it/it/catalogo-opendata/regione-toscana" target="_blank">Regione Toscana</a> <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CCBY-SA</a> 
+            
+            
+        
+            
+            
+            <br>- <a href="http://dati.regione.basilicata.it/catalog/" target="_blank">Basilicata Open Data</a> <a href="http://www.dati.gov.it/iodl/2.0/" target="_blank">IODL 2.0</a> 
+            
+            
+        
+        <br><br><b>Clicca</b> sulla mappa per modificare con gli editor JOSM o iD.
+        <br><br><i>Pagina creata con: <a href="https://github.com/simone-f/compare-to-osm" target="_blank">compare-to-osm</a></i>
+    </div>
+</body>
+</html>
