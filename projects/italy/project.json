@@ -78,14 +78,15 @@
             }
         },
         {
-            "comparator": "highwaysgeometryspatialite",
+            "comparator": "highwaysgeometrypostgis",
             "data": {
                 "open_data": {
                     "boundaries_file": "Provincia_Belluno/boundaries.shp",
                     "shapefile": "Provincia_Belluno/Strade_provincia_Belluno_WGS84.shp"
                 },
                 "osm_data": {
-                    "overpass_query": "data=area[name=\"Belluno\"][admin_level=6];way(area)[\"highway\"][\"highway\"!~\"footway\"][\"highway\"!~\"cycleway\"];(._;>;);out meta;"
+                    "overpass_query": "data=area[name=\"Belluno\"][admin_level=6];way(area)[\"highway\"][\"highway\"!~\"footway\"][\"highway\"!~\"cycleway\"];(._;>;);out meta;",
+                    "osmfilter_command": "osmfilter --keep=  --keep=highway Belluno-latest.o5m -o=Belluno.o5m"
                 }
             },
             "info": {
@@ -98,17 +99,20 @@
                 "max_zoom": 15,
                 "min_zoom": 5,
                 "type": "raster"
-            }
+            },
+            "postgis_password": "postpass",
+            "postgis_user": "simone"
         },
         {
-            "comparator": "highwaysgeometryspatialite",
+            "comparator": "highwaysgeometrypostgis",
             "data": {
                 "open_data": {
                     "boundaries_file": "Provincia_Padova/boundaries.shp",
                     "shapefile": "Provincia_Padova/c01070240012_ElementoStradaleWGS84.shp"
                 },
                 "osm_data": {
-                    "overpass_query": "data=area[name=\"Padova\"][admin_level=6];way(area)[\"highway\"][\"highway\"!~\"footway\"][\"highway\"!~\"cycleway\"];(._;>;);out meta;"
+                    "overpass_query": "data=area[name=\"Padova\"][admin_level=6];way(area)[\"highway\"][\"highway\"!~\"footway\"][\"highway\"!~\"cycleway\"];(._;>;);out meta;",
+                    "osmfilter_command": "osmfilter --keep=  --keep=highway Padova-latest.o5m -o=Padova.o5m"
                 }
             },
             "info": {
@@ -121,17 +125,20 @@
                 "max_zoom": 15,
                 "min_zoom": 5,
                 "type": "raster"
-            }
+            },
+            "postgis_password": "postpass",
+            "postgis_user": "simone"
         },
         {
-            "comparator": "highwaysgeometryspatialite",
+            "comparator": "highwaysgeometrypostgis",
             "data": {
                 "open_data": {
                     "boundaries_file": "Provincia_Rovigo/boundaries.shp",
                     "shapefile": "Provincia_Rovigo/c01070240012_ElementoStradaleWGS84.shp"
                 },
                 "osm_data": {
-                    "overpass_query": "data=area[name=\"Rovigo\"][admin_level=6];way(area)[\"highway\"][\"highway\"!~\"footway\"][\"highway\"!~\"cycleway\"];(._;>;);out meta;"
+                    "overpass_query": "data=area[name=\"Rovigo\"][admin_level=6];way(area)[\"highway\"][\"highway\"!~\"footway\"][\"highway\"!~\"cycleway\"];(._;>;);out meta;",
+                    "osmfilter_command": "osmfilter --keep=  --keep=highway Rovigo-latest.o5m -o=Rovigo.o5m"
                 }
             },
             "info": {
@@ -144,17 +151,20 @@
                 "max_zoom": 15,
                 "min_zoom": 5,
                 "type": "raster"
-            }
+            },
+            "postgis_password": "postpass",
+            "postgis_user": "simone"
         },
         {
-            "comparator": "highwaysgeometryspatialite",
+            "comparator": "highwaysgeometrypostgis",
             "data": {
                 "open_data": {
                     "boundaries_file": "Provincia_Treviso/boundaries.shp",
                     "shapefile": "Provincia_Treviso/c01070240012_ElementoStradaleWGS84.shp"
                 },
                 "osm_data": {
-                    "overpass_query": "data=area[name=\"Treviso\"][admin_level=6];way(area)[\"highway\"][\"highway\"!~\"footway\"][\"highway\"!~\"cycleway\"];(._;>;);out meta;"
+                    "overpass_query": "data=area[name=\"Treviso\"][admin_level=6];way(area)[\"highway\"][\"highway\"!~\"footway\"][\"highway\"!~\"cycleway\"];(._;>;);out meta;",
+                    "osmfilter_command": "osmfilter --keep=  --keep=highway Treviso-latest.o5m -o=Treviso.o5m"
                 }
             },
             "info": {
@@ -167,17 +177,20 @@
                 "max_zoom": 15,
                 "min_zoom": 5,
                 "type": "raster"
-            }
+            },
+            "postgis_password": "postpass",
+            "postgis_user": "simone"
         },
         {
-            "comparator": "highwaysgeometryspatialite",
+            "comparator": "highwaysgeometrypostgis",
             "data": {
                 "open_data": {
                     "boundaries_file": "Provincia_Venezia/boundaries.shp",
                     "shapefile": "Provincia_Venezia/c01070240012_ElementoStradaleWGS84.shp"
                 },
                 "osm_data": {
-                    "overpass_query": "data=area[name=\"Venezia\"][admin_level=6];way(area)[\"highway\"][\"highway\"!~\"footway\"][\"highway\"!~\"cycleway\"];(._;>;);out meta;"
+                    "overpass_query": "data=area[name=\"Venezia\"][admin_level=6];way(area)[\"highway\"][\"highway\"!~\"footway\"][\"highway\"!~\"cycleway\"];(._;>;);out meta;",
+                    "osmfilter_command": "osmfilter --keep=  --keep=highway Venezia-latest.o5m -o=Venezia.o5m"
                 }
             },
             "info": {
@@ -190,17 +203,20 @@
                 "max_zoom": 15,
                 "min_zoom": 5,
                 "type": "raster"
-            }
+            },
+            "postgis_password": "postpass",
+            "postgis_user": "simone"
         },
         {
-            "comparator": "highwaysgeometryspatialite",
+            "comparator": "highwaysgeometrypostgis",
             "data": {
                 "open_data": {
                     "boundaries_file": "Provincia_Verona/boundaries.shp",
                     "shapefile": "Provincia_Verona/c01070240012_ElementoStradaleWGS84.shp"
                 },
                 "osm_data": {
-                    "overpass_query": "data=area[name=\"Verona\"][admin_level=6];way(area)[\"highway\"][\"highway\"!~\"footway\"][\"highway\"!~\"cycleway\"];(._;>;);out meta;"
+                    "overpass_query": "data=area[name=\"Verona\"][admin_level=6];way(area)[\"highway\"][\"highway\"!~\"footway\"][\"highway\"!~\"cycleway\"];(._;>;);out meta;",
+                    "osmfilter_command": "osmfilter --keep=  --keep=highway Verona-latest.o5m -o=Verona.o5m"
                 }
             },
             "info": {
@@ -213,7 +229,9 @@
                 "max_zoom": 15,
                 "min_zoom": 5,
                 "type": "raster"
-            }
+            },
+            "postgis_password": "postpass",
+            "postgis_user": "simone"
         },
         {
             "comparator": "highwaysgeometryspatialite",
@@ -239,14 +257,15 @@
             }
         },
         {
-            "comparator": "highwaysgeometryspatialite",
+            "comparator": "highwaysgeometrypostgis",
             "data": {
                 "open_data": {
                     "boundaries_file": "Provincia_Vicenza/boundaries.shp",
                     "shapefile": "Provincia_Vicenza/c01070240012_ElementoStradaleWGS84.shp"
                 },
                 "osm_data": {
-                    "overpass_query": "data=area[name=\"Vicenza\"][admin_level=6];way(area)[\"highway\"][\"highway\"!~\"footway\"][\"highway\"!~\"cycleway\"];(._;>;);out meta;"
+                    "overpass_query": "data=area[name=\"Vicenza\"][admin_level=6];way(area)[\"highway\"][\"highway\"!~\"footway\"][\"highway\"!~\"cycleway\"];(._;>;);out meta;",
+                    "osmfilter_command": "osmfilter --keep=  --keep=highway Vicenza-latest.o5m -o=Vicenza.o5m"
                 }
             },
             "info": {
@@ -259,7 +278,9 @@
                 "max_zoom": 15,
                 "min_zoom": 5,
                 "type": "raster"
-            }
+            },
+            "postgis_password": "postpass",
+            "postgis_user": "simone"
         },
         {
             "comparator": "highwaysgeometryspatialite",
@@ -308,7 +329,7 @@
             }
         },
         {
-            "comparator": "highwaysgeometryspatialite",
+            "comparator": "highwaysgeometrypostgis",
             "data": {
                 "open_data": {
                     "boundaries_file": "Siena/boundaries.shp",
@@ -328,7 +349,9 @@
                 "max_zoom": 15,
                 "min_zoom": 5,
                 "type": "raster"
-            }
+            },
+            "postgis_password": "postpass",
+            "postgis_user": "simone"
         },
         {
             "comparator": "highwaysgeometrypostgis",
@@ -338,7 +361,8 @@
                     "shapefile": "Basilicata/el_stradale_grafo_WGS84.shp"
                 },
                 "osm_data": {
-                    "overpass_query": "data=area[name=\"Basilicata\"][admin_level=4];way(area)[\"highway\"][\"highway\"!~\"footway\"][\"highway\"!~\"cycleway\"];(._;>;);out meta;"
+                    "overpass_query": "data=area[name=\"Basilicata\"][admin_level=4];way(area)[\"highway\"][\"highway\"!~\"footway\"][\"highway\"!~\"cycleway\"];(._;>;);out meta;",
+                    "osmfilter_command": "osmfilter --keep=  --keep=highway Basilicata-latest.o5m -o=Basilicata.o5m"
                 }
             },
             "info": {
